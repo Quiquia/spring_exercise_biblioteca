@@ -42,6 +42,7 @@ public class Editorial {
         this.nombre = nombre;
     }
 
+    
    
 
 

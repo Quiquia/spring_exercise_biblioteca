@@ -1,5 +1,7 @@
 package com.egg.biblioteca.controladores;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.egg.biblioteca.entidades.Editorial;
 import com.egg.biblioteca.excepciones.MiException;
 import com.egg.biblioteca.servicios.EditorialServicio;
 
@@ -25,20 +28,32 @@ public class EditorialControlador {
     
     
      @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, ModelMap modelo) throws Exception {
+     public String registro(@RequestParam String nombre, ModelMap modelo) throws Exception {
 
-        try {
-            editorialServicio.crearEditorial(nombre);
+         try {
+             editorialServicio.crearEditorial(nombre);
 
-            modelo.put("exito", "La Editorial fue registrada correctamente!");
-        } catch (MiException ex) {
+             modelo.put("exito", "La Editorial fue registrada correctamente!");
+         } catch (MiException ex) {
 
-            modelo.put("error", ex.getMessage());
-            return "editorial_form.html";
-        }
+             modelo.put("error", ex.getMessage());
+             return "editorial_form.html";
+         }
 
-        return "index.html";
-    }
+         return "index.html";
+     }
+    
+     @GetMapping("/lista")
+     public String listar(ModelMap modelo) {
+         List<Editorial> editoriales = editorialServicio.listarEditoriales();
+          modelo.addAttribute("editoriales", editoriales);
+        //  System.out.print("Tu mensaje aquí");
+        // System.out.print(editoriales.toString());
+         return "editorial_list.html";
+        //  return "editorial_form.html";  
+
+        
+     }
 
 
 }
