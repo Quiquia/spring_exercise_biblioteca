@@ -40,9 +40,9 @@ public class LibroControlador {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam(required = false) Long isbn, @RequestParam(required = false) String titulo,
-            @RequestParam(required = false) String ejemplares, @RequestParam(required =  false) UUID idAutor,
-            @RequestParam(required = false) UUID idEditorial, ModelMap modelo)  throws Exception{
+    public String registro(@RequestParam(required = false) Long isbn, @RequestParam String titulo,
+            @RequestParam(required = false) String ejemplares, @RequestParam UUID idAutor,
+            @RequestParam UUID idEditorial, ModelMap modelo)  throws Exception{
         
                 try {
                     
