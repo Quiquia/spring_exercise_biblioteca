@@ -25,7 +25,6 @@ public class Editorial {
         
     }
 
-
     public UUID getId() {
         return id;
     }
@@ -43,8 +42,5 @@ public class Editorial {
     }
 
     
-   
-
-
     
 }

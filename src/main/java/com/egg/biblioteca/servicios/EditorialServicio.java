@@ -49,7 +49,13 @@ public class EditorialServicio {
         }
 
     }
-    
+
+     //busca un elemento especifico
+    @Transactional(readOnly = true)
+    public Editorial getOne(UUID id) {
+        return editorialRepositorio.getReferenceById(id);
+    }
+
 
     public void validar(String nombre) throws Exception {
         

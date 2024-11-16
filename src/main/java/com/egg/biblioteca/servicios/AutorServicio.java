@@ -8,7 +8,6 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-// import jakarta.transaction.Transactional;
 
 import com.egg.biblioteca.entidades.Autor;
 import com.egg.biblioteca.excepciones.MiException;
@@ -53,7 +52,12 @@ public class AutorServicio {
         }
 
     }
-    
+    //busca un elemento especifico
+    @Transactional(readOnly = true) //indica que el metodo es de solo lectura
+    public Autor getOne(UUID id) {
+        return autorRepositorio.getReferenceById(id);   
+    }
+
     public void validar(String nombre) throws MiException {
         if (nombre.isEmpty() || nombre == null) {
              throw new MiException("el nombre no puede ser nulo o estar vacío");
