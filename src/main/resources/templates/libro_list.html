@@ -135,11 +135,11 @@
           <tr>
             <th scope="col">ISBN</th>
             <th scope="col">Titulo</th>
-            <th scope="col">Portada</th>
+            <!-- <th scope="col">Portada</th> -->
             <th scope="col">Ejemplares</th>
             <th scope="col">Autor</th>
             <th scope="col">Editorial</th>
-            <!-- <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th> -->
+            <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
           </tr>
         </thead>
         <tbody th:each="libro : ${libros}">
@@ -152,8 +152,8 @@
             <td th:text="${libro.editorial.nombre}"></td>
             <td>
               <a
-                sec:authorize="hasRole('ADMIN')"
                 th:href="@{/libro/modificar/__${libro.isbn}__}"
+                sec:authorize="hasRole('ADMIN')"
                 ><i class="fas fa-feather-alt"></i> Modificar
               </a>
             </td>
@@ -184,7 +184,7 @@
             </section> -->
     </div>
 
-    <!-- <footer th:replace="~{/fragments/footer :: footer}"></footer> -->
+    <footer th:replace="~{/fragments/footer :: footer}"></footer>
 
     <!-- JavaScript Bundle with Popper -->
     <script

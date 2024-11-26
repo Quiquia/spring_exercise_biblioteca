@@ -22,12 +22,13 @@ public class Usuario {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true, nullable =  false)
     private String email;
 
     @Column(name = "password")
     private String password;
 
+    //roll definido como enum
     @Enumerated(EnumType.STRING)
     private Rol rol;
 

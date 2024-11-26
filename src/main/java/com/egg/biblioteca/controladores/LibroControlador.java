@@ -36,11 +36,12 @@ public class LibroControlador {
         List<Editorial> editoriales = editorialServicio.listarEditoriales();
         modelo.addAttribute("autores", autores);
         modelo.addAttribute("editoriales", editoriales);
+
         return "libro_form.html";
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam(required = false) Long isbn, @RequestParam String titulo,
+    public String registro(@RequestParam(required = false) Long isbn, @RequestParam(required = false) String titulo,
             @RequestParam(required = false) String ejemplares, @RequestParam UUID idAutor,
             @RequestParam UUID idEditorial, ModelMap modelo)  throws Exception{
         

@@ -77,16 +77,16 @@
                     <tr>
                         <th scope="col">Id del Editorial</th>
                         <th scope="col">Nombre del Editorial</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
 
                     </tr>
                 </thead>
-                <tbody th:each="autor : ${editoriales}"> 
+                <tbody th:each="editorial : ${editoriales}"> 
                     <tr>
                         <th scope="row" th:text="${editorial.id}"></th>
-                        <td th:text="${autor.nombre}"></td>
+                        <td th:text="${editorial.nombre}"></td>
                         <td>
-                            <a th:href= "@{/autor/modificar/__${autor.id}__}"><i class="fas fa-feather-alt">  </i> Modificar </a>
+                            <a th:href= "@{/editorial/modificar/__${editorial.id}__}" sec:authorize="hasRole('ADMIN')"><i class="fas fa-feather-alt">  </i> Modificar </a>
                         </td>
 
                     </tr>
@@ -118,15 +118,8 @@
 
         </div>
 
-        <footer class="text-muted py-5">
-            <div class="containerFooter">
-                <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
-                <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-                <p class="float-end mb-1">
-                    <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
-                </p>
-            </div>
-        </footer>
+    <footer th:replace="/fragments/footer :: footer"></footer>
+       
 
 
 
